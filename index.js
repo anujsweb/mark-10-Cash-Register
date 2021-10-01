@@ -8,15 +8,16 @@ const noOfNotes = document.querySelectorAll(".no-of-notes");
 checkButton.addEventListener("click", function validateBillAndCashAmount () {
     hideMessage();
     if (billAmount.value > 0) {
-        console.log(billAmount);
-        console.log(cashGiven);
-        if (cashGiven.value >= billAmount.value) {
-            const amountToBeReturned = cashGiven.value - billAmount.value;
-            calculateChange(amountToBeReturned);
+        console.log(billAmount.value);
+        console.log(cashGiven.value);
+        if (Number(billAmount.value) > Number(cashGiven.value)) {
+            showMessage("Do you wanna wash plates?");
         }
     
         else {
-            showMessage("Do you wanna wash plates?");
+            const amountToBeReturned = cashGiven.value - billAmount.value;
+            calculateChange(amountToBeReturned);
+            
         }
     }
     else {
