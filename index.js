@@ -5,31 +5,28 @@ const message = document.querySelector("#error-message")
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 const noOfNotes = document.querySelectorAll(".no-of-notes");
 
-checkButton.addEventListener("click", function validateBillAndCashAmount () {
+checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
     if (billAmount.value > 0) {
-        console.log(billAmount.value);
-        console.log(cashGiven.value);
+        //console.log(billAmount.value);
+        //console.log(cashGiven.value);
         if (Number(billAmount.value) > Number(cashGiven.value)) {
             showMessage("Do you wanna wash plates?");
-        }
-    
-        else {
+        } else {
             const amountToBeReturned = cashGiven.value - billAmount.value;
             calculateChange(amountToBeReturned);
-            
+
         }
+    } else {
+        showMessage("Invalid bill amount");
     }
-    else {
-            showMessage("Invalid bill amount");
-    }    
 });
 
 function calculateChange(amountToBeReturned) {
-    for(let i = 0; i < availableNotes.length; i++) {
+    for (let i = 0; i < availableNotes.length; i++) {
         const numberOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]);
         amountToBeReturned = amountToBeReturned % availableNotes[i];
-        noOfNotes[i].innerText = numberOfNotes; 
+        noOfNotes[i].innerText = numberOfNotes;
     }
 }
 
